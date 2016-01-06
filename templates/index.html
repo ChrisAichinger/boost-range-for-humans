@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Boost Range Example Code</title>
+  <link href="prism.css" rel="stylesheet" />
+</head>
+
+<body>
+  <h1>Boost Range Example Code</h1>
+  {% for category in view %}
+  {%- if category.level_headers[0] %}<h2>{{category.level_headers[0]}}</h2>{% endif %}
+  {%- if category.level_headers[1] %}<h3>{{category.level_headers[1]}}</h3>{% endif %}
+  {%- if category.level_headers[2] %}<h4>{{category.level_headers[2]}}</h4>{% endif %}
+
+  <ul>
+    {% for fun in category.functions %}
+      <li><a href="{{fun.name.replace('::', '-') + '.html'}}">{{fun.name}}</a></li>
+    {% endfor %}
+  </ul>
+  {% endfor %}
+  <script src="prism.js"></script>
+</body>
+</html>

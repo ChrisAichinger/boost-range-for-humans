@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{view.fun.name}}</title>
+  <link href="prism.css" rel="stylesheet" />
+  <link href="custom.css" rel="stylesheet" />
+</head>
+
+<body>
+  <h1>{{view.fun.name}}</h1>
+  <h2>Headers</h2>
+  <code>{{view.fun.name}}</code> is available by including any of the following headers:
+  <ul>
+    {% for header in view.fun.headers %}
+      <li><code>{{header}}</code></li>
+    {% endfor %}
+  </ul>
+  <h2>Examples</h2>
+  {% for example in view.fun.examples %}
+    <h3>{{example.name}}</h3>
+    <pre><code class="language-cpp">{{example.code}}</code></pre>
+    Output:
+    <pre>{{example.output}}</pre>
+  {% endfor %}
+  <script src="prism.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+@ifdef PIPE
+@define CALL0(func, input) input | func
+@define CALL1(func, input, a) input | func(a)
+@define CALL2(func, input, a, b) input | func(a, b)
+@define CALL3(func, input, a, b, c) input | func(a, b, c)
+@define CALL4(func, input, a, b, c, d) input | func(a, b, c, d)
+@define CALL5(func, input, a, b, c, d, e) input | func(a, b, c, d, e)
+@define PARENWRAP(x) (x)
+@else
+@define CALL0(func, input) func(input)
+@define CALL1(func, input, a) func(input, a)
+@define CALL2(func, input, a, b) func(input, a, b)
+@define CALL3(func, input, a, b, c) func(input, a, b, c)
+@define CALL4(func, input, a, b, c, d) func(input, a, b, c, d)
+@define CALL5(func, input, a, b, c, d, e) func(input, a, b, c, d, e)
+@define PARENWRAP(x) x
+@endif
