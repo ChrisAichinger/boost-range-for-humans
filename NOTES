@@ -1,12 +1,7 @@
-type_erased
-http://thbecker.net/free_software_utilities/type_erasure_for_cpp_iterators/any_iterator.html
-
-src/adjacent_filtered_bug.cpp:    auto input_range2 = boost::istream_range<int>(ss2);
-src/adjacent_filtered_bug.cpp:    for (int input : input_range2 | boost::adaptors::uniqued) {
-src/adjacent_filtered_bug.cpp:    for (int input : vec | boost::adaptors::uniqued) {
-
-
-
+* Currently missing: `type_erased`
+  See http://thbecker.net/free_software_utilities/type_erasure_for_cpp_iterators/any_iterator.html
+* Single-pass ranges not supported by `adjacent_filtered` and `uniqued`.
+  See `src/adjacent_filtered_bug.cpp`.
 
 ########
 ADAPTORS
