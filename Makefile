@@ -38,6 +38,7 @@ outputs: $(OUTPUTS)
 build: outputs $(COMPARE_STAMPS)
 
 markdown: build
+	@- mkdir -p $(MARKDOWN_DIR)
 	$(Q) python3 ./docgen.py --ext md --targetdir $(MARKDOWN_DIR)
 
 deploy: markdown
@@ -73,12 +74,12 @@ $(PROC_DIR)/%-pipe.cpp: $(SRC_DIR)/%.cpp
 	@- mkdir -p $(PROC_DIR)
 	$(Q) $(GPP) $(GPPFLAGS) $(GPPEXTRA) $< -o $@ -D PIPE
 
-$(BIN_DIR)/%: -p $(PROC_DIR)/%.cpp
-	@- mkdir $(BIN_DIR)
+$(BIN_DIR)/%: $(PROC_DIR)/%.cpp
+	@- mkdir -p $(BIN_DIR)
 	$(Q) $(CXX) $(CXXFLAGS) $(LIBS) -o $@ $<
 
-$(BIN_DIR)/%: -p $(SRC_DIR)/%.cpp
-	@- mkdir $(BIN_DIR)
+$(BIN_DIR)/%: $(SRC_DIR)/%.cpp
+	@- mkdir -p $(BIN_DIR)
 	$(Q) $(CXX) $(CXXFLAGS) $(LIBS) -o $@ $<
 
 $(OUT_DIR)/%.out: $(BIN_DIR)/%
